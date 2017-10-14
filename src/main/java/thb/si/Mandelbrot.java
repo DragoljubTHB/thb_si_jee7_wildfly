@@ -9,12 +9,14 @@ import java.io.IOException;
 public class Mandelbrot {
 
     private byte[] contentBytes;
+    private Integer w, h, it;
 
     public Mandelbrot(){}
 
-    public void create(){
 
-        int width=1920,height=1080,max=1000;
+    public void create(Integer w, Integer h, Integer it){
+
+        int width=w,height=h,max=it;
         BufferedImage image=new BufferedImage(width,height,
                 BufferedImage.TYPE_INT_RGB);
         int black=0;
@@ -51,6 +53,30 @@ public class Mandelbrot {
             e.printStackTrace();
         }
 
+    }
+
+    public Integer getW() {
+        return w;
+    }
+
+    public void setW(Integer w) {
+        this.w = w;
+    }
+
+    public Integer getH() {
+        return h;
+    }
+
+    public void setH(Integer h) {
+        this.h = h;
+    }
+
+    public Integer getIt() {
+        return it;
+    }
+
+    public void setIt(Integer it) {
+        this.it = it;
     }
 
     public byte[] getContentBytes() {

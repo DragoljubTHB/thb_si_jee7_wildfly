@@ -18,7 +18,7 @@ public class MandelbrotRESTEndpoint {
         return Response.ok().entity((StreamingOutput) output -> {
             //output.write(repo.create());
             Mandelbrot mandelbrot = new Mandelbrot();
-            mandelbrot.create();
+            mandelbrot.create(w, h, it);
             output.write(mandelbrot.getContentBytes());
             output.flush();
         }).build();
