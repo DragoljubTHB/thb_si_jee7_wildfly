@@ -9,7 +9,6 @@ import java.io.IOException;
 public class Mandelbrot {
 
     private byte[] contentBytes;
-    private Integer w, h, it;
 
     public Mandelbrot(){}
 
@@ -53,30 +52,6 @@ public class Mandelbrot {
             e.printStackTrace();
         }
 
-    }
-
-    public Integer getW() {
-        return w;
-    }
-
-    public void setW(Integer w) {
-        this.w = w;
-    }
-
-    public Integer getH() {
-        return h;
-    }
-
-    public void setH(Integer h) {
-        this.h = h;
-    }
-
-    public Integer getIt() {
-        return it;
-    }
-
-    public void setIt(Integer it) {
-        this.it = it;
     }
 
     public byte[] getContentBytes() {
