@@ -23,6 +23,36 @@ public class MandelbrotRESTEndpoint {
             output.flush();
         }).build();
     }
+    @GET
+    @Path("generateToS3")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonArray generateToS3(@QueryParam("bucketname") String aBucketName) {
+
+        S3Ctrl s3 = new S3Ctrl();
+        Mandelbrot mandelbrot = new Mandelbrot();
+        mandelbrot.create(800, 600, 1000);
+        String uploadedFileName = s3.upload(aBucketName, mandelbrot.getContentBytes());
+
+        return Json.createArrayBuilder()
+                .add(aBucketName)
+                .add(uploadedFileName)
+                .add(Response.Status.OK.getStatusCode())
+                .build();
+    }
+
+    @DELETE
+    @Path("deleteFromS3")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonArray deleteFromS3(@QueryParam("bucketname") String aBucketName) {
+        S3Ctrl s3 = new S3Ctrl();
+        s3.deleteAllFilesFrom(aBucketName);
+
+        return Json.createArrayBuilder()
+                .add(aBucketName)
+                .add(Response.Status.OK.getStatusCode())
+                .build();
+    }
+
 
 
     @GET

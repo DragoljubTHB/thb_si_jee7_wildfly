@@ -1,5 +1,7 @@
 http://127.0.0.1:8080/Mandelbrot/getMandelbrot?w=800&h=600&it=1000
 http://127.0.0.1:8080/Mandelbrot/generateToS3?bucketname=example
+http://127.0.0.1:8080/Mandelbrot/deleteFromS3?bucketname=example
+
 curl -X GET 'http://0.0.0.0:8080/Mandelbrot/getMandelbrot?w=800&h=500&it=500' --output manel.png
 
 <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
