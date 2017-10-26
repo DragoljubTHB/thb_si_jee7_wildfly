@@ -24,6 +24,7 @@ public class MandelbrotRESTEndpoint {
         }).build();
     }
 
+
     @GET
     @Path("c")
     @Produces(MediaType.APPLICATION_JSON)

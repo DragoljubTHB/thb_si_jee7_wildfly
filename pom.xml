@@ -25,6 +25,13 @@
                 <version>1.0.2.Final</version>
                 <configuration>
                     <filename>${project.build.finalName}.war</filename>
+                    <jbossHome>${env.JBOSS_HOME}</jbossHome>
+                    <!--<port>8081</port> not working -->
+                    <!--<server-args>-->
+                        <!--<server-arg>-Djboss.http.port=8081</server-arg>-->
+                        <!--<server-arg>-b=0.0.0.0</server-arg>-->
+                    <!--</server-args>-->
+
                 </configuration>
             </plugin>
         </plugins>

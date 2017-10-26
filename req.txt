@@ -1,0 +1,18 @@
+http://127.0.0.1:8080/Mandelbrot/getMandelbrot?w=800&h=600&it=1000
+http://127.0.0.1:8080/Mandelbrot/generateToS3?bucketname=example
+curl -X GET 'http://0.0.0.0:8080/Mandelbrot/getMandelbrot?w=800&h=500&it=500' --output manel.png
+
+<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
+<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-s3</artifactId>
+    <version>1.11.220</version>
+</dependency>
+
+ @GET
+    @Path("generateToS3")
+    @Produces({"image/png"})
+    public Response generateToS3(@QueryParam("bucketname") String aBucketName) {
+
+    }
+
