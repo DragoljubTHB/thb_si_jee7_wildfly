@@ -2,14 +2,16 @@ package thb.si;
 
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.DeleteObjectsRequest;
+import com.amazonaws.services.s3.model.DeleteObjectsResult;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class S3Ctrl {
 
@@ -21,7 +23,7 @@ public class S3Ctrl {
                 .build();
     }
 
-    public String upload(String bucketName, byte[] content){
+    public String upload(String bucketName, byte[] content) {
 
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(content.length);
@@ -37,6 +39,13 @@ public class S3Ctrl {
     }
 
     public void deleteAllFilesFrom(String aBucketName) {
-        s3Client.deleteObjects(new DeleteObjectsRequest(aBucketName));
+        List<DeleteObjectsRequest.KeyVersion> keys = new ArrayList<>();
+        s3Client.listObjects(aBucketName)
+                .getObjectSummaries()
+                .forEach(o -> {
+                    keys.add(new DeleteObjectsRequest.KeyVersion(o.getKey()));
+                });
+        DeleteObjectsResult result = s3Client.deleteObjects(
+                new DeleteObjectsRequest(aBucketName).withKeys(keys));
     }
 }
