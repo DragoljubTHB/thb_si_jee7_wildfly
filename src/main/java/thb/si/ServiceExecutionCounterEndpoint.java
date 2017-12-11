@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
 
-@Path("execution")
+@Path("executions")
 public class ServiceExecutionCounterEndpoint {
     @POST
     public Response registerExecution(@QueryParam("name") String serviceName) {

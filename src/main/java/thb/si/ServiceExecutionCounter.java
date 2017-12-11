@@ -29,13 +29,15 @@ public class ServiceExecutionCounter {
             serviceNameExecutionMap.get(serviceName).add(timeStamp);
         }
     }
-    public Long getActualNumberOfExecutionsByServiceName(String serviceName) {
+    public Integer getActualNumberOfExecutionsByServiceName(String serviceName) {
         //AtomicReference<Long> sum = new AtomicReference<>(0L);
         //serviceNameExecutionMap.get(serviceName).forEach((el)-> {
          //   sum.updateAndGet(v -> v + el);
         //});
 //        return sum.get();
-        return (long) serviceNameExecutionMap.get(serviceName).size();
+        Integer sum = 0;
+         if (serviceNameExecutionMap.containsKey(serviceName)) sum = serviceNameExecutionMap.get(serviceName).size();
+         return sum;
     }
 
 }
